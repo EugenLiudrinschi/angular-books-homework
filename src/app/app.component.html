@@ -1,1 +1,9 @@
-<h1 class="font-bold mb-2 text-center">{{ title }}</h1>
+<h1 class="font-bold mb-2 text-center pt-5 text-2xl">{{ title | titlecase }}</h1>
+
+<div class="max-w-3xl container mx-auto pt-5 flex flex-col">
+
+  <app-book *ngFor="let item of books" [book]="item" (onCart)="addToCart($event)"></app-book>
+
+</div>
+
+

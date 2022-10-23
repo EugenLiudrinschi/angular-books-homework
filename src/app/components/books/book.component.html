@@ -1,0 +1,24 @@
+<div class="py-5 px-5 border-2 flex items-center flex-col mb-5">
+    
+    <h2 class="font-bold">{{ book.title }}</h2>
+    <p>by: <span class="italic">{{ book.author }}</span><p>
+    <p>Price: <span class="font-bold">{{ book.price.value | currency: book.price.currency}}</span></p>
+    <img [src]="book.image" [alt]="book.title" class="w-1/4 mb-5">
+
+    <button (click)="summary = !summary" 
+      class="border rounded py-2 px-4 bg-teal-900 text-white"
+      [ngClass]="{
+        'bg-teal-900' : !summary,
+        'bg-rose-500' : summary
+      }">
+      {{ summary ? "Hide info" : "Show info" }}
+    </button>
+
+    <button (click)="addBookToCart()" class="border rounded py-2 px-4 mt-2 bg-teal-900 text-white">Add to Cart</button>
+
+    <div *ngIf="summary">
+      <p>{{ book.summary }}</p>
+      <p class="font-bold italic mt-2">ISBN: {{ book.ISBN }}</p>
+    </div>
+
+  </div>
